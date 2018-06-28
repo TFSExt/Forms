@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1.0,
   "id": "link-work-to-wiki",
-  "version": "0.0.9",
+  "version": "0.0.18",
   "name": "Link Work to Wiki",
   "description": "",
   "publisher": "boykoant",
@@ -11,6 +11,9 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
+  "icons": {
+    "default": "img/icon.png"
+  },
   "contributions": [
     {
       "id": "link-work-to-wiki",
@@ -26,6 +29,24 @@
       }
     }
   ],
+  "categories": [
+    "Plan and track"
+  ],
+  "tags": [
+    "wiki"
+  ],
+  "links": {
+    "repository": {
+      "uri": "https://github.com/TFSExt/Forms"
+    },
+    "issues": {
+      "uri": "https://github.com/TFSExt/Forms/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/TFSExt/Forms"
+  },
   "files": [
     {
       "path": "link-work-to-wiki.html",
@@ -34,7 +55,22 @@
     {
       "path": "node_modules/vss-web-extension-sdk/lib",
       "addressable": true,
-      "packagePath": "lib"
+      "packagePath": "vsts"
+    },
+    {
+      "path": "node_modules/knockout/build/output",
+      "addressable": true,
+      "packagePath": "knockout"
+    },
+    {
+      "path": "js",
+      "addressable": true,
+      "packagePath": "js"
+    },
+    {
+      "path": "img",
+      "addressable": true,
+      "packagePath": "img"
     }
   ]
 }
