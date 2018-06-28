@@ -19,7 +19,7 @@ This extension will add a custom UI control for Work Item forms. With this UI co
 #### Useful links for developing similar extensions
 
 ##### Develop
-
+- [Visual Studio Services Web Extension SDK](https://github.com/Microsoft/vss-web-extension-sdk)
 - [Extend the work item form](https://docs.microsoft.com/en-us/vsts/extend/develop/add-workitem-extension?view=vsts)
 - [Call a REST API](https://docs.microsoft.com/en-us/vsts/extend/develop/call-rest-api?view=vsts)
 
