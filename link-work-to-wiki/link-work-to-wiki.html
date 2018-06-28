@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Link Work to Wiki</title>
+</head>
+<body>
+    <script src="lib/VSS.SDK.min.js"></script>
+
+    <script>
+        VSS.init({
+            explicitNotifyLoaded: true,
+            usePlatformScripts: true,
+            usePlatformStyles: true
+        });
+
+        var module = function(workItemsTrackingServices, artifactsServices, artifactsConstants) {
+
+            console.log(artifactsServices);
+            console.log(artifactsConstants);
+
+            // get the WorkItemFormService
+            // this service allows you to get/set fields/links on the 'active' work item
+            // (the work item that currently is displayed in the UI)
+            function getWorkItemFormService() {
+                return workItemsTrackingServices.WorkItemFormService.getService();
+            }
+
+            function showContainer(container) {
+                $("#container-wait").hide();
+                $("#container-links").hide();
+                $("#container-error").hide();
+
+                if (typeof (container) === "string") {
+                    $("#" + container).show()
+                } else {
+                    container.show();
+                }
+            }
+
+            function clearLinks() {
+                $("#container-links").empty();
+            }
+
+            function appendLink(text, url) {
+                // https://boykoant.visualstudio.com/Demo/_wiki/wikis/ 03f25bd7-a46f-40bf-b725-da6e71075ae2 ? pagePath= / home
+                // vstfs:///Wiki/WikiPage/ 87c5f1b3-052d-4e1e-aef4-31b7da675647 / 03f25bd7-a46f-40bf-b725-da6e71075ae2 / home
+
+                var artifactData = artifactsServices.LinkingUtilities.decodeUri(url);
+                console.log(artifactData);
+
+                var segments = artifactData.id.split("/");
+                var pagePath = [];
+                for (var i = 2; i < segments.length; i++) {
+                    pagePath.push(segments[i]);
+                }
+
+                var context = VSS.getWebContext();
+
+                var hackedUrl = [
+                    context.account.uri,
+                    context.project.name,
+                    "/_wiki/wikis/",
+                    segments[1] + "?pagePath=" + pagePath.join("/")
+                ].join("");
+
+                var html = [
+                    "<p>",
+                    "<a target='_blank' href='" + hackedUrl + "'>",
+                    text,
+                    "<a/>",
+                    "</p>"
+                ].join("");
+
+                $("#container-links").append(html);
+            }
+
+            function reloadLinks() {
+                showContainer("container-wait");
+                getWorkItemFormService()
+                    .then(function(service) {
+                        // Get the current work item relations
+                        return service.getWorkItemRelations();
+                    })
+                    .then(function (links) {
+                        clearLinks();
+                        links
+                            .filter(function(link) {
+                                if (link.attributes) {
+                                    if (link.attributes.name) {
+                                        return link.attributes.name.toLowerCase() === "wiki page";
+                                    }
+                                }
+
+                                return false;
+                            })
+                            .forEach(function(link) {
+                                appendLink(link.rel, link.url);
+
+                                console.log(link);
+                            });
+                        showContainer("container-links");
+                    },
+                    function (error) {
+                        $("#container-error").text(error.message);
+                        showContainer("container-error");
+                    });
+            }
+
+            var listener = function () {
+                return {
+                    // called when a new work item is being loaded in the UI
+                    onLoaded: function (args) {
+                        console.log("loaded");
+                        reloadLinks();
+                    },
+
+                    // called when the active work item is modified
+                    onFieldChanged: function(args) {
+                        console.log("field changed");
+                        reloadLinks();
+                    },
+
+                    // called when the active work item is being unloaded in the UI
+                    onUnloaded: function (args) {
+                        console.log("unloaded");
+                        clearLinks();
+                    },
+
+                    // called after the work item has been saved
+                    onSaved: function (args) {
+                        console.log("saved");
+                    },
+
+                    // called when the work item is reset to its unmodified state (undo)
+                    onReset: function (args) {
+                        console.log("reset");
+                        reloadLinks();
+                    },
+
+                    // called when the work item has been refreshed from the server
+                    onRefreshed: function (args) {
+                        console.log("refreshed");
+                        reloadLinks();
+                    }
+                };
+            };
+
+            // register a listener for the work item page contribution
+            VSS.register(VSS.getContribution().id, listener);
+
+            VSS.notifyLoadSucceeded();
+        };
+
+        VSS.require([
+            "TFS/WorkItemTracking/Services",
+            "VSS/Artifacts/Services",
+            "VSS/Artifacts/Constants"
+        ], module);
+    </script>
+
+    <div id="container-wait" style="font-style: italic;">
+        please wait for links to be loaded
+    </div>
+
+    <div id="container-links" style="display: none;">
+    </div>
+
+    <div id="container-error" style="display: none; color: #FF0000; border: 1px solid #FF0000;">
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "manifestVersion": 1.0,
+  "id": "link-work-to-wiki",
+  "version": "0.0.9",
+  "name": "Link Work to Wiki",
+  "description": "",
+  "publisher": "boykoant",
+  "public": false,
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "link-work-to-wiki",
+      "type": "ms.vss-work-web.work-item-form-group",
+      "description": "Displays the list of all wiki pages linked to current work item.",
+      "targets": [
+        "ms.vss-work-web.work-item-form"
+      ],
+      "properties": {
+        "name": "Linked wiki pages",
+        "uri": "link-work-to-wiki.html",
+        "height": 200
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "link-work-to-wiki.html",
+      "addressable": true
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "lib"
+    }
+  ]
+}
+
