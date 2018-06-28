@@ -1,9 +1,10 @@
 {
   "name": "link-work-to-wiki",
-  "version": "0.0.9",
+  "version": "0.0.18",
   "author": "Anton Boyko",
   "license": "MIT",
   "dependencies": {
+    "knockout": "^3.4.2",
     "vss-web-extension-sdk": "^5.134.0"
   }
 }
