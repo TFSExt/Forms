@@ -1,6 +1,6 @@
 {
   "name": "link-work-to-wiki",
-  "version": "0.0.20",
+  "version": "0.0.24",
   "author": "Anton Boyko",
   "license": "MIT",
   "dependencies": {

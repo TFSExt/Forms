@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.0.20",
+  "version": "0.0.24",
   "name": "Linked Wiki pages",
   "description": "Displays the list of all Wiki pages linked to current Work Item.",
   "publisher": "boykoant",
@@ -15,7 +15,7 @@
     }
   ],
   "icons": {
-    "default": "img/icon.png"
+    "default": "src/img/icon.png"
   },
   "contributions": [
     {
@@ -38,6 +38,11 @@
   "tags": [
     "wiki"
   ],
+  "content": {
+    "details": {
+      "path": "docs/overview.md"
+    }
+  },
   "links": {
     "repository": {
       "uri": "https://github.com/TFSExt/Forms"
@@ -52,28 +57,28 @@
   },
   "files": [
     {
-      "path": "linked-wiki-pages.html",
+      "path": "src/linked-wiki-pages.html",
       "addressable": true
     },
     {
-      "path": "node_modules/vss-web-extension-sdk/lib",
+      "path": "src/node_modules/vss-web-extension-sdk/lib",
       "addressable": true,
       "packagePath": "vsts"
     },
     {
-      "path": "node_modules/knockout/build/output",
+      "path": "src/node_modules/knockout/build/output",
       "addressable": true,
       "packagePath": "knockout"
     },
     {
-      "path": "js",
+      "path": "src/js",
       "addressable": true,
       "packagePath": "js"
     },
     {
-      "path": "img",
+      "path": "docs/screenshots",
       "addressable": true,
-      "packagePath": "img"
+      "packagePath": "screenshots"
     }
   ]
 }
