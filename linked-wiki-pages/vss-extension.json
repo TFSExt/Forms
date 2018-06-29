@@ -1,11 +1,14 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "name": "Linked Wiki pages",
-  "description": "",
+  "description": "Displays the list of all Wiki pages linked to current Work Item.",
   "publisher": "boykoant",
-  "public": false,
+  "galleryFlags": [
+    "Public",
+    "Preview"
+  ],
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
@@ -18,13 +21,13 @@
     {
       "id": "linked-wiki-pages",
       "type": "ms.vss-work-web.work-item-form-group",
-      "description": "Displays the list of all wiki pages linked to current work item.",
+      "description": "Displays the list of all Wiki pages linked to current Work Item.",
       "targets": [
         "ms.vss-work-web.work-item-form"
       ],
       "properties": {
         "name": "Linked wiki pages",
-        "uri": "link-work-to-wiki.html",
+        "uri": "linked-wiki-pages.html",
         "height": 200
       }
     }
@@ -49,7 +52,7 @@
   },
   "files": [
     {
-      "path": "link-work-to-wiki.html",
+      "path": "linked-wiki-pages.html",
       "addressable": true
     },
     {
