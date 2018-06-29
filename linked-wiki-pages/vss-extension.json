@@ -1,0 +1,80 @@
+{
+  "manifestVersion": 1.0,
+  "id": "linked-wiki-pages",
+  "version": "0.0.20",
+  "name": "Linked Wiki pages",
+  "description": "Displays the list of all Wiki pages linked to current Work Item.",
+  "publisher": "boykoant",
+  "galleryFlags": [
+    "Public",
+    "Preview"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "img/icon.png"
+  },
+  "contributions": [
+    {
+      "id": "linked-wiki-pages",
+      "type": "ms.vss-work-web.work-item-form-group",
+      "description": "Displays the list of all Wiki pages linked to current Work Item.",
+      "targets": [
+        "ms.vss-work-web.work-item-form"
+      ],
+      "properties": {
+        "name": "Linked wiki pages",
+        "uri": "linked-wiki-pages.html",
+        "height": 200
+      }
+    }
+  ],
+  "categories": [
+    "Plan and track"
+  ],
+  "tags": [
+    "wiki"
+  ],
+  "links": {
+    "repository": {
+      "uri": "https://github.com/TFSExt/Forms"
+    },
+    "issues": {
+      "uri": "https://github.com/TFSExt/Forms/issues"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/TFSExt/Forms"
+  },
+  "files": [
+    {
+      "path": "linked-wiki-pages.html",
+      "addressable": true
+    },
+    {
+      "path": "node_modules/vss-web-extension-sdk/lib",
+      "addressable": true,
+      "packagePath": "vsts"
+    },
+    {
+      "path": "node_modules/knockout/build/output",
+      "addressable": true,
+      "packagePath": "knockout"
+    },
+    {
+      "path": "js",
+      "addressable": true,
+      "packagePath": "js"
+    },
+    {
+      "path": "img",
+      "addressable": true,
+      "packagePath": "img"
+    }
+  ]
+}
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Link Work to Wiki</title>
+</head>
+<body>
+    <script src="vsts/VSS.SDK.min.js"></script>
+
+    <script src="knockout/knockout-latest.js"></script>
+
+    <script src="js/model.js"></script>
+    <script src="js/viewModel.js"></script>
+
+    <script>
+        VSS.init({
+            explicitNotifyLoaded: true,
+            usePlatformScripts: true,
+            usePlatformStyles: true
+        });
+
+        var module = function(workItemsTrackingServices, artifactsServices, artifactsConstants) {
+            var model = getModel(workItemsTrackingServices);
+            var viewModel = getViewModel(model, artifactsServices, artifactsConstants);
+
+            ko.applyBindings(viewModel, document.getElementById("container"));
+
+
+            var listener = function () {
+                return {
+                    // called when a new work item is being loaded in the UI
+                    onLoaded: function (args) {
+                        console.log("loaded");
+                        viewModel.reload();
+                    },
+
+                    // called when the active work item is modified
+                    onFieldChanged: function(args) {
+                        console.log("field changed");
+                        viewModel.reload();
+                    },
+
+                    // called when the active work item is being unloaded in the UI
+                    onUnloaded: function (args) {
+                        console.log("unloaded");
+                        viewModel.clear();
+                    },
+
+                    // called after the work item has been saved
+                    onSaved: function (args) {
+                        console.log("saved");
+                    },
+
+                    // called when the work item is reset to its unmodified state (undo)
+                    onReset: function (args) {
+                        console.log("reset");
+                        viewModel.reload();
+                    },
+
+                    // called when the work item has been refreshed from the server
+                    onRefreshed: function (args) {
+                        console.log("refreshed");
+                        viewModel.reload();
+                    }
+                };
+            };
+
+            // register a listener for the work item page contribution
+            VSS.register(VSS.getContribution().id, listener);
+
+            VSS.notifyLoadSucceeded();
+        };
+
+        VSS.require([
+            "TFS/WorkItemTracking/Services",
+            "VSS/Artifacts/Services",
+            "VSS/Artifacts/Constants"
+        ], module);
+    </script>
+
+    <div id="container">
+
+        <div data-bind="visible: isWaitVisible">
+            please wait for links to be loaded
+        </div>
+
+        <div data-bind="visible: isLinksVisible">
+            <div data-bind="foreach: links">
+                <p>
+                    <a data-bind="attr: { href: url }" target="_blank">
+                    <span data-bind="text: text">
+                    </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div data-bind="visible: isErrorVisible">
+            <span class="validation-error">
+                <span class="icon-error-exclamation"></span>
+                <span data-bind="text: error" class="validation-error-text"></span>
+            </span>
+        </div>
+
+    </div>
+
+</body>
+</html>
