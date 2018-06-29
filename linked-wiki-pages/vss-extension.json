@@ -1,8 +1,8 @@
 {
   "manifestVersion": 1.0,
-  "id": "link-work-to-wiki",
+  "id": "linked-wiki-pages",
   "version": "0.0.18",
-  "name": "Link Work to Wiki",
+  "name": "Linked Wiki pages",
   "description": "",
   "publisher": "boykoant",
   "public": false,
@@ -16,7 +16,7 @@
   },
   "contributions": [
     {
-      "id": "link-work-to-wiki",
+      "id": "linked-wiki-pages",
       "type": "ms.vss-work-web.work-item-form-group",
       "description": "Displays the list of all wiki pages linked to current work item.",
       "targets": [
