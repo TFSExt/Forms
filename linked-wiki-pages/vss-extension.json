@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.0.25",
+  "version": "0.0.27",
   "name": "Linked Wiki pages",
   "description": "Displays the list of all Wiki pages linked to current Work Item.",
   "publisher": "boykoant",
@@ -15,7 +15,7 @@
     }
   ],
   "icons": {
-    "default": "src/img/icon.png"
+    "default": "img/icon.png"
   },
   "contributions": [
     {
@@ -57,21 +57,21 @@
   },
   "files": [
     {
-      "path": "src/linked-wiki-pages.html",
+      "path": "linked-wiki-pages.html",
       "addressable": true
     },
     {
-      "path": "src/node_modules/vss-web-extension-sdk/lib",
+      "path": "node_modules/vss-web-extension-sdk/lib",
       "addressable": true,
       "packagePath": "vsts"
     },
     {
-      "path": "src/node_modules/knockout/build/output",
+      "path": "node_modules/knockout/build/output",
       "addressable": true,
       "packagePath": "knockout"
     },
     {
-      "path": "src/js",
+      "path": "js",
       "addressable": true,
       "packagePath": "js"
     },
