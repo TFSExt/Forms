@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.0.20",
+  "version": "0.0.27",
   "name": "Linked Wiki pages",
   "description": "Displays the list of all Wiki pages linked to current Work Item.",
   "publisher": "boykoant",
@@ -38,6 +38,11 @@
   "tags": [
     "wiki"
   ],
+  "content": {
+    "details": {
+      "path": "docs/overview.md"
+    }
+  },
   "links": {
     "repository": {
       "uri": "https://github.com/TFSExt/Forms"
@@ -71,9 +76,9 @@
       "packagePath": "js"
     },
     {
-      "path": "img",
+      "path": "docs/screenshots",
       "addressable": true,
-      "packagePath": "img"
+      "packagePath": "screenshots"
     }
   ]
 }
