@@ -50,6 +50,8 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
         viewModel.showWait();
         model.getCurrentWorkItemRelations()
             .then(function (links) {
+                viewModel.links.removeAll();
+
                 links
                     // filter for valid links only
                     .filter(function (link) {
