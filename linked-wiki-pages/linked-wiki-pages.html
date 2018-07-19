@@ -87,11 +87,15 @@
             <div data-bind="foreach: links">
                 <p>
                     <a data-bind="attr: { href: url }" target="_blank">
-                    <span data-bind="text: text">
-                    </span>
+                        <span data-bind="text: text">
+                        </span>
                     </a>
                 </p>
             </div>
+        </div>
+
+        <div data-bind="visible: isEmptyVisible">
+            there are no wiki pages linked to current work item
         </div>
 
         <div data-bind="visible: isErrorVisible">

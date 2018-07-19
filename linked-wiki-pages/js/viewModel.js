@@ -29,6 +29,9 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
     viewModel.isLinksVisible = ko.pureComputed(function () {
         return viewModel.view() === con.links;
     });
+    viewModel.isEmptyVisible = ko.pureComputed(function () {
+        return (viewModel.view() === con.links) && (viewModel.links().length === 0);
+    });
     viewModel.showLinks = function () {
         viewModel.view(con.links);
     };
