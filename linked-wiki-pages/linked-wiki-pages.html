@@ -29,36 +29,26 @@
                 return {
                     // called when a new work item is being loaded in the UI
                     onLoaded: function (args) {
-                        console.log("loaded");
                         viewModel.reload();
                     },
 
                     // called when the active work item is modified
                     onFieldChanged: function(args) {
-                        console.log("field changed");
                         viewModel.reload();
-                    },
-
-                    // called when the active work item is being unloaded in the UI
-                    onUnloaded: function (args) {
-                        console.log("unloaded");
-                        viewModel.clear();
                     },
 
                     // called after the work item has been saved
                     onSaved: function (args) {
-                        console.log("saved");
+                        viewModel.reload();
                     },
 
                     // called when the work item is reset to its unmodified state (undo)
                     onReset: function (args) {
-                        console.log("reset");
                         viewModel.reload();
                     },
 
                     // called when the work item has been refreshed from the server
                     onRefreshed: function (args) {
-                        console.log("refreshed");
                         viewModel.reload();
                     }
                 };
