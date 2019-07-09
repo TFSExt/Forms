@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.0.29",
+  "version": "0.1.32",
   "name": "Linked Wiki pages",
   "description": "Displays the list of all Wiki pages linked to current Work Item.",
   "publisher": "boykoant",

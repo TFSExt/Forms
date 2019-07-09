@@ -71,21 +71,26 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
                     // get UI link items
                     .map(function(artifact) {
                         var segments = artifact.id.split("/");
-                        var pagePath = [];
+                        var pageSegments = [];
                         for (var i = 2; i < segments.length; i++) {
-                            pagePath.push(segments[i]);
+                            pageSegments.push(segments[i]);
                         }
+
+                        var pagePathEncoded = pageSegments
+                            .join("/")
+                            // replace all " " with "+"
+                            .split(" ").join("+");
 
                         var url = [
                             model.context.account.uri,
                             model.context.project.name,
                             "/_wiki/wikis/",
-                            segments[1] + "?pagePath=" + pagePath.join("/")
+                            segments[1] + "?pagePath=" + pagePathEncoded
                         ].join("");
 
                         return {
                             url: url,
-                            text: pagePath[pagePath.length - 1]
+                            text: pageSegments[pageSegments.length - 1]
                         };
                     })
                     // bind to UI
