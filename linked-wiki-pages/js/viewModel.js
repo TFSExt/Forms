@@ -80,7 +80,7 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
                             model.context.account.uri,
                             model.context.project.name,
                             "/_wiki/wikis/",
-                            segments[1] + "?pagePath=" + decodeURI(pagePath.join("/"))
+                            segments[1] + "?pagePath=" + pagePath.join("/")
                         ].join("");
 
                         return {
