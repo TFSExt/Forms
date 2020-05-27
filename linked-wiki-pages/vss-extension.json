@@ -1,14 +1,15 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.1.32",
-  "name": "Linked Wiki pages",
-  "description": "Displays the list of all Wiki pages linked to current Work Item.",
-  "publisher": "boykoant",
+  "version": "0.1.33",
+  "name": "Linked Wiki pages Dark",
+  "description": "Dark version by BlackPhlox of boyko-ant's extension. Displays the list of all Wiki pages linked to current Work Item.",
+  "publisher": "Anton Boyko",
   "galleryFlags": [
     "Public",
     "Preview"
   ],
+  "scopes": [ "vso.settings" ],
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services.Cloud"
@@ -28,12 +29,12 @@
       "properties": {
         "name": "Linked wiki pages",
         "uri": "linked-wiki-pages.html",
-        "height": 200
+        "height": 80
       }
     }
   ],
   "categories": [
-    "Plan and track"
+    "Azure Boards"
   ],
   "tags": [
     "wiki"
