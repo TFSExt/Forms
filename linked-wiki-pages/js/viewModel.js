@@ -76,8 +76,7 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
                             pageSegments.push(segments[i]);
                         }
 
-                        var pagePathEncoded = pageSegments
-                            .join("/")
+                        var pagePathEncoded = encodeURIComponent(pageSegments.join("/"))
                             // replace all " " with "+"
                             .split(" ").join("+");
 
@@ -85,7 +84,7 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
                             model.context.account.uri,
                             model.context.project.name,
                             "/_wiki/wikis/",
-                            segments[1] + "?pagePath=" + encodeURIComponent(pagePathEncoded)
+                            segments[1] + "?pagePath=" + pagePathEncoded
                         ].join("");
 
                         return {
