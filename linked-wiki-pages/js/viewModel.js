@@ -76,8 +76,7 @@ function getViewModel(model, artifactsServices, artifactsConstants) {
                             pageSegments.push(segments[i]);
                         }
 
-                        var pagePathEncoded = pageSegments
-                            .join("/")
+                        var pagePathEncoded = encodeURIComponent(pageSegments.join("/"))
                             // replace all " " with "+"
                             .split(" ").join("+");
 

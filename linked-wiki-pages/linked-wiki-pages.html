@@ -15,7 +15,8 @@
         VSS.init({
             explicitNotifyLoaded: true,
             usePlatformScripts: true,
-            usePlatformStyles: true
+            usePlatformStyles: true,
+            applyTheme: true
         });
 
         var module = function(workItemsTrackingServices, artifactsServices, artifactsConstants) {
@@ -29,11 +30,6 @@
                 return {
                     // called when a new work item is being loaded in the UI
                     onLoaded: function (args) {
-                        viewModel.reload();
-                    },
-
-                    // called when the active work item is modified
-                    onFieldChanged: function(args) {
                         viewModel.reload();
                     },
 

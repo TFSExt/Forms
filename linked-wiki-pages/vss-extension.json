@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1.0,
   "id": "linked-wiki-pages",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "name": "Linked Wiki pages",
   "description": "Displays the list of all Wiki pages linked to current Work Item.",
   "publisher": "boykoant",
@@ -33,7 +33,7 @@
     }
   ],
   "categories": [
-    "Plan and track"
+    "Azure Boards"
   ],
   "tags": [
     "wiki"
